@@ -1,0 +1,150 @@
+.alert-container {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.alert-box {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  animation: slideDown 0.3s ease-out;
+  pointer-events: auto;
+  border-left: 4px solid;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.alert-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.alert-box i {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.alert-message {
+  flex: 1;
+}
+
+.alert-message strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.alert-message p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Alert Types */
+.alert-success {
+  background-color: rgba(16, 185, 129, 0.05);
+  border-left-color: var(--secondary-color);
+  color: #065f46;
+}
+
+.alert-success i {
+  color: var(--secondary-color);
+}
+
+.alert-error,
+.alert-danger {
+  background-color: rgba(239, 68, 68, 0.05);
+  border-left-color: var(--danger-color);
+  color: #7f1d1d;
+}
+
+.alert-error i,
+.alert-danger i {
+  color: var(--danger-color);
+}
+
+.alert-warning {
+  background-color: rgba(245, 158, 11, 0.05);
+  border-left-color: var(--warning-color);
+  color: #78350f;
+}
+
+.alert-warning i {
+  color: var(--warning-color);
+}
+
+.alert-info {
+  background-color: rgba(99, 102, 241, 0.05);
+  border-left-color: var(--primary-color);
+  color: #312e81;
+}
+
+.alert-info i {
+  color: var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .alert-container {
+    top: 60px;
+    padding: 0.75rem;
+  }
+
+  .alert-box {
+    padding: 0.875rem 1rem;
+  }
+
+  .alert-box i {
+    font-size: 1.1rem;
+  }
+
+  .alert-message strong {
+    font-size: 0.95rem;
+  }
+
+  .alert-message p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Dark Mode */
+html[data-theme="dark"] .alert-box {
+  background-color: var(--bg-white);
+}
+
+html[data-theme="dark"] .alert-success {
+  background-color: rgba(16, 185, 129, 0.1);
+}
+
+html[data-theme="dark"] .alert-error,
+html[data-theme="dark"] .alert-danger {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+html[data-theme="dark"] .alert-warning {
+  background-color: rgba(245, 158, 11, 0.1);
+}
+
+html[data-theme="dark"] .alert-info {
+  background-color: rgba(99, 102, 241, 0.1);
+}

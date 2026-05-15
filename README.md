@@ -1,70 +1,257 @@
-# Getting Started with Create React App
+# iNotebook - Personal Blog Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack web application for managing personal blogs/notes with user authentication, search functionality, and real-time filtering. Built with React.js frontend and Node.js/Express.js backend with MongoDB database.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- **User Authentication**: Secure login and registration system
+- **Blog Management**: Create, read, update, and delete personal blogs
+- **Search & Filter**: Real-time search by title/description and filter by tags
+- **Responsive Design**: Modern, mobile-friendly interface
+- **Time Tracking**: Display publication time with smart formatting
+- **Tag System**: Organize blogs with custom tags
+- **Real-time Updates**: Instant UI updates for all operations
 
-### `npm start`
+## 🛠️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Frontend
+- **React.js** (v19.1.0) - UI framework
+- **React Router DOM** (v7.6.0) - Client-side routing
+- **Bootstrap** - CSS framework for styling
+- **Font Awesome** - Icons
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Backend
+- **Node.js** - Runtime environment
+- **Express.js** (v5.1.0) - Web framework
+- **MongoDB** - NoSQL database
+- **Mongoose** (v8.14.2) - MongoDB object modeling
+- **JWT** (v9.0.2) - JSON Web Token authentication
+- **bcryptjs** (v3.0.2) - Password hashing
+- **CORS** (v2.8.5) - Cross-origin resource sharing
 
-### `npm test`
+## 📋 Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Before running this application, make sure you have the following installed:
 
-### `npm run build`
+- **Node.js** (v14 or higher)
+- **npm** (v6 or higher)
+- **MongoDB** (v4.4 or higher)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Quick Start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Clone the Repository
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+git clone <repository-url>
+cd inotebook
+```
 
-### `npm run eject`
+### 2. Install Dependencies
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Install frontend dependencies:
+```bash
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Install backend dependencies:
+```bash
+cd backend
+npm install
+cd ..
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 3. Database Setup
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Option A: Local MongoDB
+1. Install MongoDB on your system
+2. Start MongoDB service:
+   ```bash
+   # Windows
+   net start MongoDB
+   
+   # macOS/Linux
+   sudo systemctl start mongod
+   ```
 
-## Learn More
+#### Option B: MongoDB Atlas (Cloud)
+1. Create a free account at [MongoDB Atlas](https://www.mongodb.com/atlas)
+2. Create a new cluster
+3. Get your connection string
+4. Update the connection string in `backend/db.js`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 4. Environment Configuration
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Create a `.env` file in the backend directory:
 
-### Code Splitting
+```bash
+cd backend
+touch .env
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Add the following environment variables:
 
-### Analyzing the Bundle Size
+```env
+# Database Configuration
+MONGODB_URI=mongodb://localhost:27017/inotebook
+# OR for MongoDB Atlas:
+# MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/inotebook
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# JWT Secret (generate a strong secret key)
+JWT_SECRET=your_super_secret_jwt_key_here
 
-### Making a Progressive Web App
+# Server Configuration
+PORT=5000
+NODE_ENV=development
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 5. Run the Application
 
-### Advanced Configuration
+#### Option A: Run Both Frontend and Backend Simultaneously
+```bash
+npm run both
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### Option B: Run Separately
 
-### Deployment
+**Terminal 1 - Backend:**
+```bash
+cd backend
+npm start
+# or
+nodemon index.js
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**Terminal 2 - Frontend:**
+```bash
+npm start
+```
 
-### `npm run build` fails to minify
+### 6. Access the Application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:5000
+
+## 📁 Project Structure
+
+```
+inotebook/
+├── public/
+│   ├── index.html
+│   └── ...
+├── src/
+│   ├── components/
+│   │   ├── AddNote.js
+│   │   ├── Alert.js
+│   │   ├── Home.js
+│   │   ├── Login.js
+│   │   ├── Navbar.js
+│   │   ├── NoteItem.js
+│   │   ├── Notes.js
+│   │   ├── SearchBar.js
+│   │   └── Signup.js
+│   ├── context/
+│   │   └── notes/
+│   │       ├── noteContext.js
+│   │       └── NoteState.js
+│   ├── App.js
+│   ├── App.css
+│   └── index.js
+├── backend/
+│   ├── models/
+│   │   ├── Notes.js
+│   │   └── User.js
+│   ├── routes/
+│   │   ├── auth.js
+│   │   └── notes.js
+│   ├── middleware/
+│   │   └── fetchUser.js
+│   ├── db.js
+│   ├── index.js
+│   └── package.json
+├── package.json
+└── README.md
+```
+
+## 🔧 API Endpoints
+
+### Authentication
+- `POST /api/auth/createuser` - Register new user
+- `POST /api/auth/login` - User login
+
+### Notes/Blogs
+- `GET /api/notes/fetchallnotes` - Get all user's notes
+- `POST /api/notes/addnote` - Create new note
+- `PUT /api/notes/updatenote/:id` - Update note
+- `DELETE /api/notes/deletenote/:id` - Delete note
+
+## 🔐 Authentication
+
+The application uses JWT (JSON Web Tokens) for authentication. Tokens are stored in localStorage and automatically included in API requests.
+
+## 🎨 Features Overview
+
+### Search & Filter
+- **Real-time Search**: Search blogs by title or description
+- **Tag Filtering**: Filter blogs by specific tags
+- **Combined Filtering**: Use search and tag filter together
+
+### Blog Management
+- **Create Blogs**: Add new blogs with title, description, and tags
+- **Edit Blogs**: Update existing blog content
+- **Delete Blogs**: Remove blogs with confirmation
+- **Time Tracking**: See when each blog was published
+
+### User Experience
+- **Responsive Design**: Works on desktop, tablet, and mobile
+- **Real-time Updates**: Instant UI feedback for all operations
+- **Smart Time Display**: Shows relative time for recent posts
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+1. **MongoDB Connection Error**
+   - Ensure MongoDB is running
+   - Check connection string in `backend/db.js`
+   - Verify database permissions
+
+2. **Port Already in Use**
+   - Change port in `backend/index.js` (line 6)
+   - Update frontend API calls if needed
+
+3. **CORS Issues**
+   - Ensure CORS is properly configured in backend
+   - Check if frontend and backend are running on correct ports
+
+4. **JWT Token Issues**
+   - Clear localStorage and login again
+   - Check JWT_SECRET in environment variables
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 Author
+
+**Modala Swathi**
+- GitHub: [@yourusername](https://github.com/yourusername)
+- Email: your.email@example.com
+
+## 🙏 Acknowledgments
+
+- React.js community for excellent documentation
+- MongoDB for the robust database solution
+- Bootstrap for the responsive UI framework
+- Font Awesome for the beautiful icons
+
+---
+
+**Happy Blogging! 📝✨**
